@@ -33,5 +33,12 @@ jq -r '.version' chrome-extension/manifest.json > chrome-extension/version.txt
 ## Comando Unificado para Atualizar Versão e Recompilar
 
 ```sh
-jq '.version |= (split(".") | .[-1] = (.[-1] | tonumber + 1 | tostring) | join("."))' chrome-extension/manifest.json > temp.json && mv temp.json chrome-extension/manifest.json && jq -r '.version' chrome-extension/manifest.json > chrome-extension/version.txt  && npx tailwindcss -i ./input.css -o ./chrome-extension/tailwind.min.css && rm -rf chrome-extension.zip && zip -r chrome-extension.zip chrome-extension/
+jq '.version |= (split(".") | .[-1] = (.[-1] | tonumber + 1 | tostring) | join("."))' chrome-extension/manifest.json > temp.json && \
+mv temp.json chrome-extension/manifest.json && \
+jq -r '.version' chrome-extension/manifest.json > chrome-extension/version.txt && \
+version=$(cat chrome-extension/version.txt) && \
+sed -i '' "s|<script src=\"popup.js\"></script>|<script src=\"popup.js?v=${version}\"></script>|" chrome-extension/popup.html && \
+npx tailwindcss -i ./input.css -o ./chrome-extension/tailwind.min.css && \
+rm -rf chrome-extension.zip && \
+zip -r chrome-extension.zip chrome-extension/
 ```
