@@ -8,7 +8,7 @@ LOCAL_VERSION_FILE="./version.txt"
 
 # Baixar a versão mais recente do GitHub temporariamente
 TEMP_VERSION_FILE=$(mktemp)
-curl -s -o "$TEMP_VERSION_FILE" "$GITHUB_VERSION_URL"
+curl -L -s "$GITHUB_VERSION_URL" -o "$TEMP_VERSION_FILE"
 
 # Ler versões
 LOCAL_VERSION=$(cat "$LOCAL_VERSION_FILE")
@@ -33,7 +33,7 @@ if [ "$REMOTE_VERSION" != "$LOCAL_VERSION" ]; then
 
     for file in "${FILES[@]}"; do
         echo "Baixando $file..."
-        curl -s -O "https://github.com/c3t4r4/GetIDS/raw/refs/heads/main/chrome-extension/$file"
+        curl -L -s "https://github.com/c3t4r4/GetIDS/raw/refs/heads/main/chrome-extension/$file" -o $file
     done
 
     # Atualizar a versão local

@@ -8,7 +8,7 @@ set "GITHUB_VERSION_URL=https://github.com/c3t4r4/GetIDS/raw/refs/heads/main/chr
 set "LOCAL_VERSION_FILE=version.txt"
 
 :: Baixar a versão mais recente do GitHub
-curl -s -o temp_version.txt %GITHUB_VERSION_URL%
+curl -L -s  %GITHUB_VERSION_URL% -o temp_version.txt
 
 :: Ler versões
 set /p LOCAL_VERSION=<%LOCAL_VERSION_FILE%
@@ -23,7 +23,7 @@ if NOT "!LOCAL_VERSION!"=="!REMOTE_VERSION!" (
 
     for %%F in (%FILES%) do (
         echo Baixando %%F...
-        curl -s -O "https://github.com/c3t4r4/GetIDS/raw/refs/heads/main/chrome-extension/%%F"
+        curl -L -s "https://github.com/c3t4r4/GetIDS/raw/refs/heads/main/chrome-extension/%%F" -o "%%F"
     )
 
     :: Atualizar a versão local
