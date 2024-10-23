@@ -1,9 +1,12 @@
 {
   "manifest_version": 3,
   "name": "GetIDS",
-  "version": "1.0",
+  "version": "1.0.3",
   "description": "Busca a expressão profile_id: e exibe o path e número encontrado.",
-  "permissions": ["activeTab", "scripting"],
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
   "host_permissions": [
     "https://www.instagram.com/*",
     "https://www.facebook.com/*"
@@ -21,8 +24,13 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://www.instagram.com/*", "https://www.facebook.com/*"],
-      "js": ["content.js"]
+      "matches": [
+        "https://www.instagram.com/*",
+        "https://www.facebook.com/*"
+      ],
+      "js": [
+        "content.js"
+      ]
     }
   ]
 }
