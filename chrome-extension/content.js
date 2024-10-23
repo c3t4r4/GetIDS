@@ -10,10 +10,14 @@
 })();
 
 (() => {
-  const regex = /"NAME":"([^"]+)"/;
+  const regex = /"user":\s*{[^}]*"name":"([^"]+)"/;
   const match = document.documentElement.innerHTML.match(regex);
   if (match) {
-    console.log(`Profile Name encontrado: ${match[1]}`);
+    let profileNameMatch = match ? match[1] : "";
+    profileName = JSON.parse(`"${profileNameMatch}"`);
+    console.log(
+      `Profile Name encontrado: "${profileNameMatch}" convertido para "${profileName}"`
+    );
   } else {
     console.log("Profile Name não encontrado.");
   }

@@ -60,9 +60,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function extractProfileName() {
-    const regex = /"NAME":"([^"]+)"/;
+    const regex = /"user":\s*{[^}]*"name":"([^"]+)"/;
     const match = document.documentElement.innerHTML.match(regex);
-    const profileName = match ? match[1] : "";
+    let profileName = match ? match[1] : "";
+    profileName = JSON.parse(`"${profileName}"`);
     return { profileName };
   }
 
