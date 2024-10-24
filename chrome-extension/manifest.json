@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "GetIDS",
-  "version": "1.0.8",
+  "version": "1.0.11",
   "description": "Busca a expressão profile_id: e exibe o path e número encontrado.",
   "permissions": [
     "activeTab",
