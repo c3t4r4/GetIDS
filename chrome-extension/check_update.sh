@@ -27,6 +27,7 @@ if [ "$REMOTE_VERSION" != "$LOCAL_VERSION" ]; then
         "popup.html"
         "popup.js"
         "version.txt"
+        "tailwind.min.css"
         "check_update.sh"
         "check_update.bat"
     )
@@ -43,3 +44,4 @@ else
     echo "Você já está na versão mais recente: $LOCAL_VERSION."
     rm "$TEMP_VERSION_FILE"
 fi
+
